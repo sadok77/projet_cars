@@ -5,132 +5,82 @@
     padding: 0;
     font-family:'Times New Roman', Times, serif;
     box-sizing: border-box; 
-    transition: all.2s linear;
-     text-decoration: none;
-     border: none;
+    transition: all 0.2s linear;
+    text-decoration: none; /*suppr soulignement des liens*/
+    border: none;
 }
 html{
-font-size: 62.5%;
+font-size: 66.5%;
 overflow: auto;
 scroll-padding-top: 7em;
 scroll-behavior: smooth;
 }
 
+
 body{
     position: relative;
 }
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    background-color: #fff;
-    display:flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 8%;
-    height: 5rem;
-    box-shadow: 0 0 1rem 0 red;
+.navbar {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
-header .logo{
-   color: #ea1f33;
-   font-size: 2.5rem;
-   font-weight: bold;
-}
-header .logo span {
-    color: black;   
-}
-.menu{
-    display: flex;
-}
-.menu li {
-    list-style: none;
-    margin: 0 1.5rem;
-}
-.menu li a {
-      font-size: 1.4rem;
-      color: black;
-      font-weight: 300;
-      transition: 0.2s;
-}
-.menu li a:hover {
-color: #ea1f33;
-}
-header button {
-    background-color: #ea1f33;
-    cursor:pointer;
-    color:#fff;
-    padding: 0.5rem 2.5rem;
-}
-#home {
-margin-top: 5rem;
-height: calc(100vh - 5rem);
-padding: 0 8%;
-display: flex;
-align-items: center;
-justify-content: space-between;
-position: relative;
-
-}
-/* scrollbar CSS */
-
-::-webkit-scrollbar {
-    width: 0.8rem;
-    background-color: #eee;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #ea1f33;
-    border-radius: 2rem;
-}
-
-#home .left {
-    width: 40%;
-
-}
-#home .left h1{
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
-#home .left span{
-    color:#ea1f33;  
-}
-#home .left p{
-    margin-bottom: 3rem;
-    color: #999;
-    font-size: 1.5rem;
-}
-#home .left a{ background-color: #ea1f33;
-    padding: 1rem 2rem;
+.navbar-nav .nav-link {
     font-size: 1.4rem;
-    color: #fff;
-    transition: 0.5s;
+    padding: 0.8rem 1.5rem; /* espace cliquable */
+    color: #000;
+}
 
+.navbar-nav .nav-link:hover {
+    color: #ea1f33; 
 }
-#home .left a:hover{
-    background-color: black;
+
+
+/* HOME – Mobile First */
+#home {
+  margin-top: 3rem;
+  min-height: 100vh;
+  padding: 0 8%;
+  display: flex; /*alignement*/
+  flex-wrap: wrap; /* passe en colonne sur mobile */
+  align-items: center; 
+  justify-content: center;
+  gap: 2rem; /* espace entre texte et image */
 }
-#home .right{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
+#home .left, #home .right {
+  width: 100%; /*le texte et l’image prennent chacun une ligne*/
+  text-align: center;
+} /* Sur mobile, les deux passent l’un en dessous de l’autre.*/
+
+
 #home .right img{
-     width: 33rem;
-    height: 7cm;
+  width:100%;
+  max-width:58rem; /*limite la largeur sur grand écran*/
+  display:block;   /*enlève l’espace sous l’image*/
 }
-#cars{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+
+
+/* TABLET */
+@media (min-width: 768px) {
+  #home .left {
+    text-align: left;
+  }
 }
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  #home {
+    justify-content: space-between;
+  }
+
+  #home .left { width: 35%; text-align: left; }
+  #home .right { width: 55%; }
+}
+
+
 .section_title{
-    text-transform: uppercase;
+    text-transform: uppercase; /*Transforme en majuscules*/
     position: relative;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     text-align: center;
 }
 
@@ -156,29 +106,94 @@ position: relative;
     height: 5px;              /* épaisseur de la bande */
     background-color: #ea1f33;
     border-radius: 3px;}
+
+#cars, #services, #contact {
+    display: flex; /*transforme ces sections en conteneurs flexibles.*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;          /* espace vertical entre les blocs */
+}
+/* scrollbar CSS */
+
+::-webkit-scrollbar {
+    width: 0.8rem;
+    background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ea1f33;
+    border-radius: 6rem; /*arrondit les bords du curseur*/
+} 
+
+
+
+
+#home .left h1{
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+#home .left span{
+    color:#ea1f33;  
+}
+#home .left p{
+    margin-bottom: 3rem; /*espace sous chaque élément.*/
+    color: #999;
+    font-size: 1.5rem;
+}
+#home .left a{ background-color: #ea1f33;
+    padding: 1rem 2rem; /*espace à l’intérieur du bouton*/
+    font-size: 1.4rem;
+    color: #fff;
+    transition: 0.5s;
+
+}
+#home .left a:hover{
+    background-color: black; /*Change la couleur de fond du 
+                                 lien en noir quand on survole.*/
+}
+
+
+
+
 .images{
- margin: 100px auto;
- padding: 0 9%;
+ margin: 100px auto; /*espace extérieur autour de l’élément.*/
+ padding: 0 9%; /*espace intérieur entre 
+                le bord de l’élément et son contenu.*/
 }
 .images ul{
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; /*Alignement et distribution des éléments.*/
+    flex-wrap: wrap; /*passer à la ligne suivante si la largeur est dépassée.*/
     justify-content: center;   /* Centre toutes les cartes */
     gap: 30px;                 /* Espace entre les voitures */
 }
 
-.images li{
-     width: 30%;                /* Taille uniforme */
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    overflow: hidden;
-    padding-bottom: 15px;
-    transition: 0.3s;
-     text-align: center;
-      
-    
+
+
+/* ----- CARS : MOBILE FIRST ----- */
+.images li {
+  flex: 1 1 260px;
+  max-width: 100%;
 }
+
+
+
+/* TABLET */
+@media (min-width: 768px) {
+  .images li {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .images li {
+    flex: 1 1 30%;
+    max-width: 30%;
+  }
+}
+
 .images li:hover {
     transform: translateY(-5px);
 }
@@ -194,14 +209,14 @@ position: relative;
     border-bottom: 1px solid #eee;
 }
 .images li a {
-    margin-top: 10px;   /* 👉 Décale le texte vers le bas */
-    display: block
+    margin-top: 10px;   /* Décale le texte vers le bas */
+    display: block;
     padding : 15px 0;
 
 }
 .images li span:first-of-type {
     display: block;
-    margin-top: 50px; 
+    margin-top: 15px; 
     
 }
 .images li span{
@@ -210,16 +225,58 @@ position: relative;
     padding: 1px 40px;
 }
 
-#services {
-    display: flex ;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.car {
+    display: flex;
     flex-direction: column;
+    align-items: center;        /* centre tout sous l’image */
+    padding-bottom: 20px;
+    text-align: center;         /* centre le texte */
+}
+
+.car span, .car .prix, .car a {
+    display: block; /* Chaque élément sur sa ligne */
 
 }
+
+
+
+.car span:nth-of-type(1) {/* Style du premier texte de la voiture */
+
+    font-size: 1.8rem;      /* Taille du texte */
+    font-weight: 700;       /* Texte en gras */
+    letter-spacing: 1px;    /* Espacement entre les lettres */
+    margin-top: 15px;       /* Espace au-dessus */
+    color: #111;          /* Couleur du texte (gris très foncé) */
+}
+
+
+.car .prix {
+    font-size: 1.6rem;
+    color: #444;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+
+.car a {
+    display: inline-block; /* Bloc modifiable mais reste sur la même ligne */
+    background: #ea1f33;
+    color: #fff;
+    padding: 11px 18px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 1.4rem;
+    transition: 0.3s; /* Animation fluide pour les changements*/
+    
+}
+
+.car a:hover {
+    background: #000;
+    color: #fff;
+}
+
 .list_services {
-    margin: 100% 0;
+    
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -228,6 +285,7 @@ position: relative;
     width: 100%;
 
 }
+
 .service{
     width: 18rem; 
     padding: 1.5em;
@@ -277,15 +335,7 @@ border-radius: 0.5rem;
     color: #0056b3;       
     text-decoration: underline;  
 }
-#contact {
-height: auto;
-display: flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;
-text-align: center;
- padding: 2rem; 
-}
+
 .localisation_contact {
     display: flex;                     
     align-items: center;               
@@ -294,7 +344,7 @@ text-align: center;
     margin: 100px 0;                                    
    height: 80vh;                       
 }
-                      
+                   
 .localisation{
     width: 49%;
     padding: 0.5rem;
@@ -396,4 +446,75 @@ font-size: 1.4rem;
     border-top: 1px solid #333;
     padding-top: 1.5rem;
 }
+/* Bouton Dark / Light */
+.theme-toggle-btn { 
+position: fixed;
+ bottom: 20px; 
+ right: 20px; 
+ width: 55px; 
+ height: 55px; 
+ background: #f97316;
+ border-radius: 50%;
+ display: flex;
+    
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 9999; font-size: 24px; } /*passe au-dessus*/
 
+.theme-toggle-btn .icon { position: absolute; 
+transition: opacity 0.3s ease,
+transform 0.3s ease;} 
+
+body:not(.dark) .sun { opacity: 0; transform: scale(2.5); } body.dark .moon { opacity: 0; transform: scale(0.5); }
+
+body.dark {
+  background-color: #111;
+  color: white;
+}
+
+/* MOBILE */
+@media (max-width: 991px) {
+  .navbar-nav {
+    margin-top: 1.5rem;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.6rem;
+    padding: 1rem 0;
+  }
+}
+/* DESKTOP*/
+@media (min-width: 992px) {
+  .navbar {
+    height: 80px;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.4rem;
+  }
+}
+ 
+.brands_list {
+    display: flex;              
+    justify-content: center;    /* centre horizontalement */
+    align-items: center;        /* aligne verticalement */
+    gap: 1rem;                  /* espace entre les logos */
+    flex-wrap: wrap;            /* passe à la ligne sur mobile */
+    margin-top: 8rem;
+}
+.brands_list img {
+    width: 160px;           /* largeur identique */
+    height: 90px;        /* hauteur identique */
+    object-fit: contain; 
+    background: white;   /* optionnel */
+   
+}
+#brands {
+    margin-bottom: 10em;
+}
+
+#brands .section_title {
+    margin-top: 3rem;   /* augmente ou diminue selon ton goût */
+}
